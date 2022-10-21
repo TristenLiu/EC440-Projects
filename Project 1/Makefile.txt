@@ -1,0 +1,12 @@
+#Compiler
+CC = gcc
+
+#flags
+CFLAGS = -Wall -Werror -O0 -g
+
+#build target executables
+all: 
+	gcc -Wall -Werror -O0 -g -o myshell proj1main.c myshell.c 
+
+clean: 
+	rm myshell
