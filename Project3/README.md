@@ -9,6 +9,7 @@ In Project 2 we implemented a basic threading library that enables a developer t
 perform computations in multiple threads. In this Project we are going to extend the library to
 facilitate communication between threads.
 To achieve this, we will need to:
+
 1. Implement a basic locking mechanism that switches the interactivity of a thread on/off.
 At certain stages of the execution of a thread, it may be desirable to prevent the thread
 from being interrupted (for example, when it manipulates global data structures such
@@ -19,8 +20,11 @@ status and will be scheduled whenever an alarm signal is received. Note that a t
 is supposed to call unlock only when it has previously performed a lock operation.
 Moreover, the result of calling lock twice without invoking an intermediate unlock is
 undefined.
+
 2. Implement `pthread_join` POSIX thread function:
+
 `int pthread_join(pthread_t thread, void **value_ptr);`
+
 This function will postpone the execution of the thread that initiated the call until the
 target thread terminates, unless the target thread has already terminated. There is now
 the need to correctly handle the exit code of threads that terminate. On return from a
@@ -29,28 +33,37 @@ to `pthread_exit` by the terminating thread shall be made available in the locat
 referenced by `value_ptr`
 The results of multiple simultaneous calls to `pthread_join` specifying the same target
 thread are undefined.
+
 3. Add semaphore support to your library. As discussed in class, semaphores can be used
 to coordinate interactions between multiple threads. You have to implement the
 following functions (for which you should include `semaphore.h`):
+
 `int sem_init(sem_t *sem, int pshared, unsigned value);`
+
   This function will initialize an unnamed semaphore referred to by `sem`. The
 `pshared` argument always equals to 0, which means that the semaphore pointed
 to by `sem` is shared between threads of the process. Attempting to initialize an
 already initialized semaphore results in undefined behavior
+
 `int sem_wait(sem_t *sem);`
+
   `sem_wait` decrements (locks) the semaphore pointed to by `sem`. If the
 semaphore’s value is greater than zero, then the decrement proceeds, and the
 function returns immediately. If the semaphore currently has the value zero,
 then the call blocks until it becomes possible to perform the decrement (i.e., the
 semaphore value rises above zero). For this Project, the value of the
 semaphore never falls below zero.
+
 `int sem_post(sem_t *sem);`
+
   `sem_post` increments (unlocks) the semaphore pointed to by `sem`. If the
 semaphore’s value consequently becomes greater than zero, then another
 thread blocked in a `sem_wait` call will be woken up and proceeds to lock the
 semaphore. Note that when a thread is woken up and takes the lock as part of
 sem_post, the value of the semaphore will remain zero.
+
 `int sem_destroy(sem_t *sem);`
+
   `sem_destroy` destroys the semaphore specified at the address pointed to by
 `sem` which means that only a semaphore that has been initialized by `sem_init`
 should be destroyed using `sem_destroy`. Destroying a semaphore that other
