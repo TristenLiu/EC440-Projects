@@ -1,10 +1,10 @@
-###Project 1: Simple Shell
+### Project 1: Simple Shell
 
-#Project Goals:
+# Project Goals:
 To understand & correctly use important Unix/POSIX system calls.
 To develop a simple shell application.
 
-#Project Description:
+# Project Description:
   The goal of this project is to implement a basic shell which is able to execute commands,
 redirect the standard input/output (stdin/stdout) of commands to files, pipe the output of
 commands to other commands, and carry out commands in the background.
@@ -18,19 +18,18 @@ space characters). For example, if the user types cat x, your shell will need to
 cat binary and pass x as its argument. When the shell has received a line of input, it typically
 waits until all commands have finished. Only then, a new prompt is displayed (however, this
 behavior can be altered – see below for details).
-  Your shell must also be able to interpret and execute the following meta-characters: '<', '>', '|',
-and '&':
+  Your shell must also be able to interpret and execute the following meta-characters: `<`, `>`, `|`, and `&`
 
-1. command '<' filename In this case, a command takes its input from the file (not stdin).
+1. command `<` filename In this case, a command takes its input from the file (not stdin).
 Note that spacing is irrelevant in this case. For example, cat<file and cat <file are
 valid inputs. Also, only one input redirection is allowed for a single command. (cat
 <<file is invalid)
 
-2. command '>' filename An input following this template indicates that a command writes
+2. command `>` filename An input following this template indicates that a command writes
 its output to the specified file (not stdout). Again, spacing is irrelevant (see case a) and
 only one input redirection is allowed for a single command.
 
-3. ‘| ’ The pipe character allows several commands to be connected, forming a pileline:
+3. `|` The pipe character allows several commands to be connected, forming a pileline:
 the output of the command before “|” is piped to the input of the command following
 “|”. Multiple pipe signs are allowed on the command line. Spacing is irrelevant
 (described above).
@@ -39,7 +38,7 @@ the output of the command before “|” is piped to the input of the command fo
 `cat a| sort | wc` indicates that the output of the cat command is
 channeled to the sort and sort sends its output to the input of the wc program.
 
-4. The ampersand character '&’ should allow the user to execute a command
+4. The ampersand character `&` should allow the user to execute a command
 (commands) in the background. In this case, the shell immediately displays a prompt
 for the next line regardless of whether the commands on the previous line have
 finished).
@@ -53,8 +52,8 @@ valid, while cat f | cat < g is not).
 command is not found, etc.), your shell should display an error message (cannot exceed a
 single line), print the prompt, and wait for the next input. The error message should follow the
 template “ERROR:” (without quotes) + your_error_message. To facilitate automated grading,
-when you start your simple shell program with the argument '-n', then your shell must not
-output any command prompt (no "my_shell$ "). Just read and process commands as usual.
+when you start your simple shell program with the argument `-n`, then your shell must not
+output any command prompt (no `my_shell$ `). Just read and process commands as usual.
   To exit the shell, the user must type Ctrl-D (pressing the D button while holding control). You
 may assume that the maximum length of individual tokens (commands and filenames) is 32
 characters, and that the maximum length of an input line is 512 characters. Your shell is
@@ -94,9 +93,3 @@ forked – this will not affect the open file descriptor in the child.
 8. While the project assignment talks about system calls, feel free to use the libc wrapper
 functions, documented in their corresponding beautiful man pages instead.
 
-Submission Guidelines:
-  Your shell must be written in C and run on Linux. It must compile without any
-warning/errors and run on ec440.bu.edu. (i.e., gcc -Werror will be in use)
-  In your home directory create a folder (e.g., project1) and place README, makefile,
-myshell.c files (potentially, myshell.h) there. Switch to the project1 directory and
-execute submit1.
