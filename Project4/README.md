@@ -86,7 +86,7 @@ this end, we suggest that you use the library function `mmap`. `mmap` has two ad
 memory in multiples of the page size. 
 - Second, `mmap` allows you to create pages that have no read/write permissions, and thus, cannot be accessed arbitrarily.
   
-  Now that we have pages that are properly aligned and that cannot be accessed by any
+Now that we have pages that are properly aligned and that cannot be accessed by any
 thread, the next question is how we can implement the `tls_read` and `tls_write` functions.
 - For this, the library routine `mprotect` is very handy, which allows us to "unprotect" memory
 regions at the beginning of a read or write operation, and later "reprotect" it when we are
@@ -99,7 +99,7 @@ contiguous in memory. As a result, when you perform read and write operations th
 multiple pages of the local storage, you need to break up these operations into accesses to
 the individual pages.
 
-  Finally, the question arises what happens when a thread directly accesses a memory page (a
+Finally, the question arises what happens when a thread directly accesses a memory page (a
 LSA) that is protected. In this case, the operating system sends a signal (`SIGSEGV`) to the
 offending thread. Thus, you could install a signal handler for `SIGSEGV`, and whenever such a
 signal is caught, you simply terminate the currently running thread (by calling
