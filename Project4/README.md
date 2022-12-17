@@ -19,12 +19,14 @@ To provide support for thread local storage (TLS), you are supposed to implement
 following functions in a library:
 
 `int tls_create(unsigned int size)`
+
   This function creates a local storage area (LSA) for the currently executing thread that can
 hold (at least) `size` bytes. It returns 0 on success or -1 (error) if a thread already has a local
 storage which size is larger than 0 bytes. After a LSA has been created, it can be read and
 written by the following two functions.
 
 `int tls_write(unsigned int offset, unsigned int length, char *buffer)`
+
   This function reads `length` bytes, starting from the memory location pointed to by `buffer`, and
 writes them into the local storage area of the currently executing thread, starting at position
 `offset`. It returns 0 on success and -1 (error) if the function is asked to write more data than the
@@ -33,6 +35,7 @@ the function trusts that the buffer from which data is read holds at least `leng
 result of the call is undefined.
 
 `int tls_read(unsigned int offset, unsigned int length, char *buffer)`
+
   This function reads `length` bytes from the local storage area of the currently executing thread,
 starting at position `offset`, and writes them into the memory location pointed to by `buffer`. The
 function returns 0 on success or -1 (error) if it is asked to read past the end of the LSA (i.e.,
@@ -41,10 +44,12 @@ that the buffer into which data is written is large enough to hold at least `len
 result of the call is undefined.
 
 `int tls_destroy()`
+
   This function frees a previously allocated local storage area of the currently executing thread. It
 returns 0 on success and -1(error) when the thread does not have a local storage area.
 
 `int tls_clone(pthread_t tid)`
+
   This function clones the local storage area of a target thread identified by tid. When a thread
 local storage is cloned, the content is not simply copied. Instead, the storage areas of both
 threads initially refer to the same memory location. Only when one thread writes to its own LSA
