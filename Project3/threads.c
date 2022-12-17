@@ -116,7 +116,7 @@ int pthread_create(
             return -1;
         }
 
-        // Check for the closest FRESHthread without going out of bounds
+        // Check for the closest FRESH thread without going out of bounds
         pthread_t i = 0;
         while (i < MAX_THREADS && TCB[i].status != FRESH)
         {
