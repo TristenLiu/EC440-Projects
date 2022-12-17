@@ -1,8 +1,8 @@
 # Project 2: User Mode Thread Library
 
 ## Project Goals:
-● Grok the idea of threads.
-● Implement independent, parallel execution within a process.
+- Grok the idea of threads.
+- Implement independent, parallel execution within a process.
 
 ## Project Description:
   The main deliverable for this project is a basic thread system for Linux. In the lectures, we
@@ -12,6 +12,7 @@ address space of a single process. As a result, they share the same heap memory,
 of *CPU registers* and a *stack*. The thread subsystem provides a set of library functions that
 applications may use to create, start and terminate threads, and manipulate them in various
 ways.
+
   The most well-known and widespread standard that specifies a set of interfaces for
 multi-threaded programming on Unix-style operating systems is called POSIX threads (or
 pthreads). Note that pthreads merely prescribes the interface of the threading functionality. The
@@ -39,6 +40,7 @@ invoked differs from this. When it returns from `main()`, the effect shall be as
 implicit call to `exit()` using the return value of `main()` as the exit status.
 
 `void pthread_exit(void *value_ptr);`
+
 The `pthread_exit()` function terminates the calling thread. In our current implementation, we
 ignore the value passed in as the first argument (`value_ptr`) and clean up all information
 related to the terminating thread. The process shall exit with an exit status of 0 after the last
@@ -46,6 +48,7 @@ thread has been terminated. The behavior shall be as if the implementation calle
 zero argument at thread termination time.
 
 `pthread_t pthread_self(void);`
+
 The `pthread_self()` function shall return the thread ID of the calling thread. For more details
 about error handling, please refer to the respective man pages.
 
