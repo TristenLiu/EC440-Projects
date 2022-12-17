@@ -1,10 +1,10 @@
-## EC440: Project 3 - Thread Synchronization
+# EC440: Project 3 - Thread Synchronization
 
-# Project Goals
+## Project Goals
 - To enable numerous threads to safely interact
 - To extend our threading library with basic synchronization primitives
 
-# Project Description
+## Project Description
 In Project 2 we implemented a basic threading library that enables a developer to create and
 perform computations in multiple threads. In this Project we are going to extend the library to
 facilitate communication between threads.
@@ -58,7 +58,7 @@ threads are currently blocked on (in `sem_wait`) produces undefined behavior.
 Using a semaphore that has been destroyed produces undefined results, until
 the semaphore has been reinitialized using `sem_init`.
 
-# Implementation Hints / Details
+## Implementation Hints / Details
 1. In Project 3 we extend the functionality of the threading library you built in the previous
 project.
 2. Adding the `lock` and the `unlock` functions is straightforward. To lock, you can make
