@@ -1,10 +1,10 @@
-### Project 1: Simple Shell
+# Project 1: Simple Shell
 
-# Project Goals:
+## Project Goals:
 To understand & correctly use important Unix/POSIX system calls.
 To develop a simple shell application.
 
-# Project Description:
+## Project Description:
   The goal of this project is to implement a basic shell which is able to execute commands,
 redirect the standard input/output (stdin/stdout) of commands to files, pipe the output of
 commands to other commands, and carry out commands in the background.
@@ -65,7 +65,7 @@ execution (unless the program is in the background). You might also find the doc
 for signals (and in particular SIGCHLD) useful to be able to collect the status of processes that
 exit when running in the background.
 
-#Some hints:
+## Some hints:
 1. A simple shell such as this needs at least a simple command-line parser to figure out
 what the user is trying to do. To read a line from the user, you may use fgets(3).
 2. If a valid command has been entered, the shell should fork(2) to create a new (child)
