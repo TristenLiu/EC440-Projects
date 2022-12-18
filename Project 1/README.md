@@ -8,11 +8,13 @@ To develop a simple shell application.
   The goal of this project is to implement a basic shell which is able to execute commands,
 redirect the standard input/output (stdin/stdout) of commands to files, pipe the output of
 commands to other commands, and carry out commands in the background.
+
   Your shell should implement a simple REPL (read – eval – print – loop) paradigm. Your shell
 should use “my_shell$” (without the quotes) as prompt. At each prompt, the user should be
 able to type commands (e.g., ls, ps, cat) which should be executed by the shell. You can
 access these binaries by searching directories determined by the PATH environment variable
 that is passed to your shell.
+
   As in reality, commands can have arguments that are separated by whitespace (one or more
 space characters). For example, if the user types cat x, your shell will need to invoke the
 cat binary and pass x as its argument. When the shell has received a line of input, it typically
@@ -54,6 +56,7 @@ single line), print the prompt, and wait for the next input. The error message s
 template “ERROR:” (without quotes) + your_error_message. To facilitate automated grading,
 when you start your simple shell program with the argument `-n`, then your shell must not
 output any command prompt (no `my_shell$ `). Just read and process commands as usual.
+                            
   To exit the shell, the user must type Ctrl-D (pressing the D button while holding control). You
 may assume that the maximum length of individual tokens (commands and filenames) is 32
 characters, and that the maximum length of an input line is 512 characters. Your shell is
@@ -65,7 +68,7 @@ execution (unless the program is in the background). You might also find the doc
 for signals (and in particular SIGCHLD) useful to be able to collect the status of processes that
 exit when running in the background.
 
-## Some hints:
+## Implementation Hints / Details:
 1. A simple shell such as this needs at least a simple command-line parser to figure out
 what the user is trying to do. To read a line from the user, you may use fgets(3).
 2. If a valid command has been entered, the shell should fork(2) to create a new (child)
